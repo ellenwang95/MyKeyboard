@@ -1,0 +1,35 @@
+/*border*/
+body:before, body:after {
+    content: "";
+    position: fixed;
+    background: #BDBDBD;
+    left: 0;
+    right: 0;
+    height: 8%;
+}
+body:before {
+    top: 0;
+}
+body:after {
+    bottom: 0;
+}
+
+div.exaggerated {
+    -webkit-text-fill-color: #585858;
+	font-size: 20px;
+}
+
+div.dull {
+	-webkit-text-fill-color: #6E6E6E;
+	font-size: 16px;
+}
+
+input.minimal {
+	border: none;
+	outline: none;
+	color: #BDBDBD; /* caret */
+    text-shadow: 0px 0px 0px #000;
+    -webkit-text-fill-color: #585858;
+    font-size: 20px;
+    text-align: center;
+}

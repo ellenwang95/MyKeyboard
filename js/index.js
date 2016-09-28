@@ -3,21 +3,20 @@ var MyKeyCode = function(text, link) {
   this.link = link; 
 };
 
-
 // https://github.com/wesbos/keycodes/blob/gh-pages/scripts.js
 var myKeyCodes = {
   // 3 : "break",
-  8 : new MyKeyCode("guh typo", ""),
-  // 9 : "tab",
+  8 : new MyKeyCode("Toss the negativity", ""), //delete/backspace
+  9 : new MyKeyCode("next please", ""), //tab
   // 12 : 'clear',
-  // 13 : "enter",
-  // 16 : "shift",
-  // 17 : "ctrl ",
+  13 : new MyKeyCode("You just found the entrance!", "home.html"), //enter
+  16 : new MyKeyCode(".. your mindset from time to time. ;)", ""), //shift
+  17 : new MyKeyCode("Procrastinating is bad. Procrastination is the devil!","https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator?language=en"), //ctrl
   // 18 : "alt",
   // 19 : "pause/break",
-  // 20 : "caps lock",
-  // 27 : "escape",
-  32 : new MyKeyCode("JUMP!", ""),
+  20 : new MyKeyCode("AH OKAY ..oops sorry", "http://www.slate.com/blogs/lexicon_valley/2015/04/01/accidental_caps_lock_is_the_typographical_faux_pas_of_our_time.html"), //capslock
+  27 : new MyKeyCode(".. the chaos.", ""), //escape
+  32 : new MyKeyCode("JUMP!", ""), //space
   // 33 : "page up",
   // 34 : "page down",
   // 35 : "end",
@@ -40,7 +39,7 @@ var myKeyCodes = {
   // 53 : "5",
   // 54 : "6",
   // 55 : "7",
-  56 : new MyKeyCode("My birthdate! :D", ""),
+  56 : new MyKeyCode("My birthdate! :D", ""), //8
   // 57 : "9",
   // 58 : ":",
   // 59 : "semicolon (firefox), equals",
@@ -56,27 +55,27 @@ var myKeyCodes = {
   // 70 : "f",
   // 71 : "g",
   // 72 : "h",
-  // 73 : "i",
+  73 : new MyKeyCode("Solo traveler", ""), //i
   // 74 : "j",
   // 75 : "k",
-  // 76 : "l",
+  76 : new MyKeyCode("I have a friend who hates it when I use \'lol\'. It's sliiightly rubbing off on me.",""), //l
   // 77 : "m",
   // 78 : "n",
   // 79 : "o",
   // 80 : "p",
-  // 81 : "q",
+  81 : new MyKeyCode("Don't give up!! Persevere!",""), //q
   // 82 : "r",
   // 83 : "s",
   // 84 : "t",
   // 85 : "u",
-  86 : new MyKeyCode("There's this Korean Pop group... ", "https://en.wikipedia.org/wiki/BTS_(band)"),
+  86 : new MyKeyCode("There's this Korean Pop group... ", "https://en.wikipedia.org/wiki/BTS_(band)"),  //V!!!!
   // 87 : "w",
   // 88 : "x",
-  // 89 : "y",
+  89 : new MyKeyCode("Made this on a whim. Wanted to make something interactive and personal.",""), //y",
   // 90 : "z",
-  // 91 : "Windows Key / Left ⌘ / Chromebook Search key",
+  91 : new MyKeyCode("I COMMAND FROM THE LEFT!!", ""), //Windows Key / Left ⌘ / Chromebook Search key",
   // 92 : "right window key ",
-  // 93 : "Windows Menu / Right ⌘",
+  93 : new MyKeyCode("!!I COMMAND FROM THE RIGHT", ""), //Windows Menu / Right ⌘",
   // 96 : "numpad 0 ",
   // 97 : "numpad 1 ",
   // 98 : "numpad 2 ",
@@ -140,11 +139,11 @@ var myKeyCodes = {
   // 181 : "mute/unmute (firefox)",
   // 182 : "decrease volume level (firefox)",
   // 183 : "increase volume level (firefox)",
-  // 186 : "semi-colon / ñ",
-  // 187 : "equal sign ",
+  186 : new MyKeyCode("\'A semicolon is used when an author could’ve ended a sentence but chose not to. You are the author and the sentence is your life.\'", "http://www.projectsemicolon.org/"), //semicolon
+  187 : new MyKeyCode("Really, everyone's the same no matter where you go.",""), //equal sign
   // 188 : "comma",
   // 189 : "dash ",
-  // 190 : "period ",
+  190 : new MyKeyCode("Cramps.", ""), //period
   // 191 : "forward slash / ç",
   // 192 : "grave accent / ñ",
   // 193 : "?, / or °",
@@ -152,7 +151,7 @@ var myKeyCodes = {
   // 219 : "open bracket ",
   // 220 : "back slash ",
   // 221 : "close bracket ",
-  // 222 : "single quote ",
+  222 : new MyKeyCode("\'You are your own architect.\'","https://www.goodreads.com/author/quotes/6542225.Jaejoong"), //single quote
   // 223 : "`",
   // 224 : "left or right ⌘ key (firefox)",
   // 225 : "altgr",
@@ -175,7 +174,7 @@ function update(e) {
     var link = document.getElementById("dynamiclink");
 
     if(!chosenKeyCode) {
-      text.innerHTML = 'oh didn\'t get that one yet';
+      text.innerHTML = "oh didn't get that one yet";
       link.innerHTML = "";
       link.href = "";
       return;
@@ -184,6 +183,10 @@ function update(e) {
     text.innerHTML = chosenKeyCode.text; 
     link.innerHTML = chosenKeyCode.link ? "[x]" : "";
     link.href = chosenKeyCode.link ? chosenKeyCode.link : "";
+
+    if(e.keyCode == 13) { //home.js
+      link.target = "";
+    }
     
 }
 
