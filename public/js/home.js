@@ -9,8 +9,9 @@ var inputResponses = {
 };
 
 window.onload = function() {
-    var textinput = document.getElementById("textinput"); 
-	textinput.addEventListener("keyup", showResponse, false);
+ //    var textinput = document.getElementById("textinput"); 
+	// textinput.addEventListener("keyup", showResponse, false);
+
 };
 
 function showResponse(e) {

@@ -1,8 +1,3 @@
-var levelup = require('levelup')
-//Create our database, supply location and options.
-//This will create or open the underlying LevelDB store.
-var db = levelup('./db/mykeyboarddb')
-
 function todaysDate() {
 	var today = new Date();
 	var dd = today.getDate();
@@ -11,7 +6,7 @@ function todaysDate() {
 	return dd+'/'+mm+'/'+yyyy;
 }
 
-function add(word, firstline, link, maincontent) {
+var add = function(db, word, firstline, link, maincontent) {
 	var value = {
 		firstline: firstline,
 		link: link,
@@ -24,16 +19,21 @@ function add(word, firstline, link, maincontent) {
 	});
 }
 
-function del(word) {
-	db.del(word, function (err) {
-		if (err) return console.log('some I/O error AH!', err);
-	});
-}
-
-function get(word) {
+var get = function(db, word) {
 	db.get(word, function (err, value) {
 		if (err) return console.log('Key not found! :(', err);
 		console.log("Found word: " + word);
 		return value;
 	})
 }
+
+// var del = function(db, word) {
+// 	db.del(word, function (err) {
+// 		if (err) return console.log('some I/O error AH!', err);
+// 	});
+// }
+
+module.exports = {
+  add: add,
+  get: get
+};

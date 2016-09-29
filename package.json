@@ -4,13 +4,16 @@
   "description": "My Keyboard: interactive personal website.",
   "main": "app.js",
   "dependencies": {
-    "browserify": "^13.1.0",
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "leveldown": "^1.5.0",
     "levelup": "^1.3.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^13.1.0"
+  },
   "scripts": {
+    "build-dbops-js": "node_modules/.bin/browserify db/db.js db/newentry.js -o browserified/dbopsbundle.js"
   },
   "repository": {
     "type": "git",
