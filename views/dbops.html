@@ -6,7 +6,8 @@
 </head> 
 <body>
 	<div>
-		<form action="http://127.0.0.1:3000/newentry" method="post">
+		<h2> Add New Entry: </h2>
+		<form action="http://localhost:3000/newentry" method="post">
 		  Word:<br>
 		  <input type="text" name="word">
 		  <br>
@@ -22,5 +23,15 @@
 		  <input type="submit" value="Submit!">
 		</form>
 	</div>
+	<div>
+		<h2> Read from Db: </h2>
+		<form action="http://localhost:3000/readentry" method="post">
+			Word:<br>
+			<input type="text" name="word">
+			<br><br>
+			<input type="submit" value="Submit!">
+		</form>
+	</div>
+
 </body>
 </html> 

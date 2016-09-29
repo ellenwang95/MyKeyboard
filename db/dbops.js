@@ -15,14 +15,20 @@ var add = function(db, word, firstline, link, maincontent) {
 	};
 	db.put(word, value, function (err) {
 		 if (err) return console.log('some I/O error AH!', err);
-		 console.log("Added word: " + word);
+		 console.log("Added: " + word + " " + firstline + " " + link + " " + maincontent + " " + todaysDate());
+			console.log("added value: " + value.firstline);
 	});
 }
 
 var get = function(db, word) {
 	db.get(word, function (err, value) {
-		if (err) return console.log('Key not found! :(', err);
+		if (err) {
+			console.log('Word not found! :(', err);
+			return "oh didn't get that one";
+		}
 		console.log("Found word: " + word);
+		console.log("value3: " + value.firstline);
+		
 		return value;
 	})
 }
@@ -32,6 +38,7 @@ var get = function(db, word) {
 // 		if (err) return console.log('some I/O error AH!', err);
 // 	});
 // }
+
 
 module.exports = {
   add: add,
