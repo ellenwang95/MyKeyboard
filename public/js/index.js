@@ -58,7 +58,7 @@ var myKeyCodes = {
   73 : new MyKeyCode("Solo traveler", ""), //i
   // 74 : "j",
   // 75 : "k",
-  76 : new MyKeyCode("I have a friend who hates it when I use \'lol\'. It's sliiightly rubbing off on me.",""), //l
+  // 76 : new MyKeyCode("I have a friend who hates it when I use \'lol\'. It's sliiightly rubbing off on me.",""), //l
   77 : new MyKeyCode("Mark Manson", "https://markmanson.net"),//m,
   78 : new MyKeyCode("Let's try something new today.", ""), //n,
   // 79 : "o",
