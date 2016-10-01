@@ -15,7 +15,7 @@ body, input {
 
 div.centertext {
   height: 90%;
-  width: 98%;
+  width: 100%;
   display: flex;
   position: fixed;
   align-items: center;

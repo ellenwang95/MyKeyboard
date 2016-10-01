@@ -7,6 +7,7 @@ function todaysDate() {
 }
 
 var add = function(db, word, firstline, link, maincontent) {
+	word = word.toLowerCase();
 	var value = {
 		firstline: firstline,
 		link: link,
@@ -20,6 +21,7 @@ var add = function(db, word, firstline, link, maincontent) {
 }
 
 var get = function(db, word, callback) {
+	word = word.toLowerCase();
 	db.get(word, function (err, value) {
 		if (err) {
 			console.log("Word not found: " + word);

@@ -33,3 +33,14 @@ input.minimal {
     font-size: 20px;
     text-align: center;
 }
+
+#contentflexbox {
+    flex-direction: column; 
+    width: 30%;
+    max-height: 100%;
+    margin-top: 3%;
+    margin-left: 35%;
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+}
