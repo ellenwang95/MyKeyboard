@@ -8,21 +8,27 @@ var levelup = require('levelup');
 var db = levelup('db/mykeyboarddb', {valueEncoding : 'json'});
 var dbops = require('./db/dbops');
 
+// dbops.printReadStream(db);
+
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use('/js',express.static(path.join(__dirname, 'public/js')));
 app.use('/css',express.static(path.join(__dirname, 'public/css')));
 app.use('/db',express.static(path.join(__dirname, 'db')));
 
+//routing 
+
+//keyboard page
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname+'/views/index.html'));
 });
 
+//home page 
 app.get('/home.html', function (req, res) {
 	res.sendFile(path.join(__dirname+'/views/home.html'));
 });
 
-//////
+//db ops page 
 app.get('/dbops.html', function (req, res) {
 	res.sendFile(path.join(__dirname+'/views/dbops.html'));
 });
@@ -33,18 +39,17 @@ app.post('/newentry', function (req, res) {
 });
 
 app.post('/readentry', function (req, res) {
-	console.log("word to be found: " + req.body.word);
-	var result = dbops.get(db, req.body.word);
-	res.send('You read the entry ' + req.body.word + '\n' + result);
+	dbops.get(db, req.body.word, function (value) {
+		res.send(value);
+	});
 });
-///////
 
+//listen for entered text on home page
 io.on('connection', function (socket) {
 	socket.on('entered text', function (textinput) {
-	    var retrievedentry = dbops.get(db, textinput); 
-	    socket.emit('got entry', {
-      		retrievedentry: retrievedentry
-    	});
+		dbops.get(db, textinput, function (value) {
+			socket.emit('got entry', value);
+		});
 	});
 
 });

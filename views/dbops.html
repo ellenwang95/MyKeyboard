@@ -2,9 +2,10 @@
 <html lang="en"> 
 <head>
 	<meta charset="UTF-8"> 
+	<link rel="stylesheet" type="text/css" href="css/dbops.css"> 
 	<title>Ugly DB Ops</title> 
 </head> 
-<body>
+<body class="center">
 	<div>
 		<h2> Add New Entry: </h2>
 		<form action="http://localhost:3000/newentry" method="post">
@@ -12,13 +13,13 @@
 		  <input type="text" name="word">
 		  <br>
 		  First Line:<br>
-		  <input type="text" name="firstline">
+		  <textarea rows="3" cols="50" name="firstline"></textarea>
 		  <br>
 		  Link:<br>
 		  <input type="text" name="link">
 		  <br>
 		  Main Content:<br>
-		  <input type="text" name="maincontent">
+		  <textarea rows="3" cols="50" name="maincontent"></textarea>
 		  <br><br>
 		  <input type="submit" value="Submit!">
 		</form>

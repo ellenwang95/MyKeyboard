@@ -9,7 +9,8 @@
 // // };
 
 var socket = io.connect();
-//  // Keyboard events
+
+//listen for keyboard events
 window.addEventListener("keyup", function (event) {
 	var textinput = document.getElementById("textinput"); 
 	if (!(event.ctrlKey || event.metaKey || event.altKey)) {
@@ -17,32 +18,22 @@ window.addEventListener("keyup", function (event) {
     }
     if (event.which === 13) { // enter
     	socket.emit('entered text', textinput.value.toLowerCase());
-    	// if(inputResponses[textinput.value.toLowerCase()]) {
-    	// 	$("#textinputdiv").animate({'bottom': '200'}, 1000);
-	    // 	fadeInNewContent(inputResponses[textinput.value.toLowerCase()]);
-    	// } else {
-    	// 	$("#textinputdiv").animate({'bottom': '150'}, 1000);
-    	// 	fadeInNewContent("Nothing in the bank for that yet.");
-    	// }
     }
 }, false); 
 
-//  // Socket events
-
-// Whenever the server emits 'login', log the login message
+//listen for socket events from server
 socket.on('got entry', function (retrievedentry) {
-	console.log("GOT ENTRY! " + retrievedentry);
-	alert(JSON.stringify(retrievedentry));
+    if(retrievedentry.hasOwnProperty("error")) {
+        $("#textinputdiv").animate({'bottom': '150'}, 1000);
+        fadeInNewContent("Nothing in the bank for that yet.");
+    } else {
+        $("#textinputdiv").animate({'bottom': '200'}, 1000);
+        fadeInNewContent(retrievedentry.firstline);
+    }
 });
 
-// // window.onload = function() {
-// //     var textinput = document.getElementById("textinput"); 
-// // 	window.addEventListener("keyup", showResponse, false);
-// // };
-
-
-// function fadeInNewContent(response) {
-// 	$("#content").fadeOut(function() {
-// 	  	$(this).html(response).fadeIn();
-// 	});
-// }
+function fadeInNewContent(response) {
+	$("#content").fadeOut(function() {
+	  	$(this).html(response).fadeIn();
+	});
+}

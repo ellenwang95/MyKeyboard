@@ -1,0 +1,9 @@
+input, textarea {
+	width: 300px;
+    font-size:12pt;
+}
+
+.center {
+    width: 30%;
+    margin: 0 auto; 
+}

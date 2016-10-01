@@ -14,33 +14,47 @@ var add = function(db, word, firstline, link, maincontent) {
 		date: todaysDate()
 	};
 	db.put(word, value, function (err) {
-		 if (err) return console.log('some I/O error AH!', err);
-		 console.log("Added: " + word + " " + firstline + " " + link + " " + maincontent + " " + todaysDate());
-			console.log("added value: " + value.firstline);
+		if (err) return console.log('some I/O error AH!', err);
+		console.log("Added value: ", value);
 	});
 }
 
-var get = function(db, word) {
+var get = function(db, word, callback) {
 	db.get(word, function (err, value) {
 		if (err) {
-			console.log('Word not found! :(', err);
-			return "oh didn't get that one";
+			console.log("Word not found: " + word);
+			callback({ error: true });
+		} else {
+			console.log("Found word: ", word);
+			// console.log("Value: ", value);
+			callback(value); //use retrieved value
 		}
-		console.log("Found word: " + word);
-		console.log("value3: " + value.firstline);
 		
-		return value;
-	})
+	});
 }
 
-// var del = function(db, word) {
-// 	db.del(word, function (err) {
-// 		if (err) return console.log('some I/O error AH!', err);
-// 	});
-// }
+var del = function(db, word) {
+	db.del(word, function (err) {
+		if (err) return console.log('some I/O error AH!', err);
+		console.log("Deleted: ", word);
+	});
+}
+
+var printReadStream = function(db) {
+	db.createReadStream({  
+	  limit     : 100           // maximum number of entries to read
+	  , keys      : true          // see db.createKeyStream()
+	  , values    : true          // see db.createValueStream()
+	}).on('data', function (data) {
+	      console.log("key:", data.key);
+	      console.log("value:", data.value);
+	    });
+}
 
 
 module.exports = {
   add: add,
-  get: get
+  get: get,
+  del: del,
+  printReadStream: printReadStream
 };
