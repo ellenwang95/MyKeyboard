@@ -16,7 +16,7 @@ var add = function(db, word, firstline, link, maincontent) {
 	};
 	db.put(word, value, function (err) {
 		if (err) return console.log('some I/O error AH!', err);
-		console.log("Added value: ", value);
+		console.log("Added word: " + word + "with value: ", value);
 	});
 }
 
@@ -53,10 +53,21 @@ var printReadStream = function(db) {
 	    });
 }
 
+var renameKey = function(db, origkey, newkey) {
+	get(db, origkey, function (value) {
+		db.put(newkey, value, function (err) {
+			if (err) return console.log('some I/O error AH!', err);
+			console.log("Added value: ", value);
+		});
+		del(db, origkey); 
+	});
+}
+
 
 module.exports = {
   add: add,
   get: get,
   del: del,
-  printReadStream: printReadStream
+  printReadStream: printReadStream,
+  renameKey: renameKey
 };

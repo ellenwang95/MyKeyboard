@@ -9,6 +9,7 @@ var db = levelup('db/mykeyboarddb', {valueEncoding : 'json'});
 var dbops = require('./db/dbops');
 
 // dbops.printReadStream(db);
+// dbops.renameKey(db, 'q', 'quit');
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 
