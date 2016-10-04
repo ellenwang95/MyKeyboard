@@ -14,17 +14,17 @@ var myKeyCodes = {
   17 : new MyKeyCode("Procrastinating is bad. Procrastination is the devil!","https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator?language=en"), //ctrl
   18 : new MyKeyCode("You always have a choice", ""), //alt/option
   // 19 : "pause/break",
-  20 : new MyKeyCode("AH OKAY ..oops sorry", "http://www.slate.com/blogs/lexicon_valley/2015/04/01/accidental_caps_lock_is_the_typographical_faux_pas_of_our_time.html"), //capslock
+  20 : new MyKeyCode("YEP ..oops sorry", "http://www.slate.com/blogs/lexicon_valley/2015/04/01/accidental_caps_lock_is_the_typographical_faux_pas_of_our_time.html"), //capslock
   27 : new MyKeyCode(".. the chaos.", ""), //escape
   32 : new MyKeyCode("JUMP!", ""), //space
   // 33 : "page up",
   // 34 : "page down",
   // 35 : "end",
   // 36 : "home ",
-  // 37 : "left arrow ",
-  // 38 : "up arrow ",
-  // 39 : "right arrow",
-  // 40 : "down arrow ",
+  37 : new MyKeyCode("(･∇･)", ""), //（〜^∇^)〜left arrow ",
+  38 : new MyKeyCode("(･∇･)", ""),//up arrow ", 
+  39 : new MyKeyCode("(･∇･)", ""), //right arrow", (._.) ( l: ) ( .-. ) ( :l ) (._.)
+  40 : new MyKeyCode("(･∇･)", ""), //"down arrow ", 
   // 41 : "select",
   // 42 : "print",
   // 43 : "execute",
@@ -32,11 +32,11 @@ var myKeyCodes = {
   // 45 : "insert ",
   // 46 : "delete",
   48 : new MyKeyCode("We all gotta start from somewhere.",""),//0",
-  // 49 : "1",
-  // 50 : "2",
-  // 51 : "3",
-  // 52 : "4",
-  // 53 : "5",
+  49 : new MyKeyCode("Solo", ""),//1",
+  50 : new MyKeyCode("Soulmates", ""),//"2",
+  51 : new MyKeyCode("Started taking piano lessons", ""), //3",
+  52 : new MyKeyCode("Started taking swimming lessons", ""),//"4",
+  // 53 : new MyKeyCode("", ""), //5",
   // 54 : "6",
   // 55 : "7",
   56 : new MyKeyCode("My birthdate! :D", ""), //8
@@ -51,12 +51,12 @@ var myKeyCodes = {
   // 66 : "b",
   // 67 : "c",
   // 68 : "d",
-  // 69 : "e",
+  69 : new MyKeyCode("ew", ""), //e 
   70 : new MyKeyCode("Friends, Family",""),//f",
   // 71 : "g",
-  // 72 : "h",
+  72 : new MyKeyCode("How are you?", ""),//h
   73 : new MyKeyCode("Solo traveler", ""), //i
-  // 74 : "j",
+  // 74 : new MyKeyCode("", ""),//j
   // 75 : "k",
   // 76 : new MyKeyCode("I have a friend who hates it when I use \'lol\'. It's sliiightly rubbing off on me.",""), //l
   77 : new MyKeyCode("Mark Manson", "https://markmanson.net"),//m,
@@ -66,7 +66,7 @@ var myKeyCodes = {
   81 : new MyKeyCode("Don't give up!! Persevere!",""), //q
   // 82 : "r",
   83 : new MyKeyCode("Stretch daily!", ""),//s",
-  // 84 : "t",
+  84 : new MyKeyCode("Tea > Coffee", ""), //t
   // 85 : "u",
   86 : new MyKeyCode("There's this Korean Pop group... ", "https://en.wikipedia.org/wiki/BTS_(band)"),  //V!!!!
   87 : new MyKeyCode("Water (water) (water)","http://www.setnode.com/blog/university-of-waterloo-cheers/"),
@@ -140,18 +140,18 @@ var myKeyCodes = {
   // 182 : "decrease volume level (firefox)",
   // 183 : "increase volume level (firefox)",
   186 : new MyKeyCode("\'A semicolon is used when an author could’ve ended a sentence but chose not to. You are the author and the sentence is your life.\'", "http://www.projectsemicolon.org/"), //semicolon
-  187 : new MyKeyCode("We're all the same, really.",""), //equal sign
-  188 : new MyKeyCode("Pause, take some time to enjoy and appreciate.", ""), //comma",
-  // 189 : "dash ",
+  187 : new MyKeyCode("Everyone’s work is equally important.",""), //equal sign
+  188 : new MyKeyCode("Foood comaa nooo", ""), //comma",
+  189 : new MyKeyCode("The em dash is perhaps the most versatile punctuation mark.", "http://www.thepunctuationguide.com/em-dash.html"), //dash 
   190 : new MyKeyCode("Cramps.", ""), //period
-  // 191 : "forward slash / ç",
+  191 : new MyKeyCode("/italics/ /emphasis/ /actions/ ////border//// //comments", ""), //forward slash / ç",
   // 192 : "grave accent / ñ",
   // 193 : "?, / or °",
   // 194 : "numpad period (chrome)",
-  // 219 : "open bracket ",
+  219 : new MyKeyCode("[:", ""), //"open bracket ",
   // 220 : "back slash ",
-  // 221 : "close bracket ",
-  222 : new MyKeyCode("\'You are your own architect.\' -- Jaejoong ","https://www.goodreads.com/author/quotes/6542225.Jaejoong"), //single quote
+  221 : new MyKeyCode(":]", ""), //close bracket ",
+  222 : new MyKeyCode("\'You are your own architect.\' -- Jaejoong ",""), //single quote
   // 223 : "`",
   // 224 : "left or right ⌘ key (firefox)",
   // 225 : "altgr",
@@ -161,6 +161,15 @@ var myKeyCodes = {
   // 234 : "XF86Back",
   // 255 : "toggle touchpad"
 };
+
+var rollCount = 0; 
+var emojiUp = 0; 
+var rollingEmojisUp = ["(^∇^)","( ^∇)","( ^)","(　　)","(^ )","(∇^ )"];//1
+var rollingEmojis = ["(･∇･)","( ･∇)","( ･)","(　　)","(･ )","(∇･ )"];//0
+var getRoll = function(i, up) {
+  var roll = i%6 < 0 ? i%6 + 6 : i%6;
+  return up ? rollingEmojisUp[roll] : rollingEmojis[roll];
+}
 
 window.addEventListener("keydown", update, false);
  
@@ -178,13 +187,28 @@ function update(e) {
       link.innerHTML = "";
       link.href = "";
       return;
-    } 
+    }
 
-    text.innerHTML = chosenKeyCode.text; 
+    //roll emoji!
+    if([37,38,39,40].indexOf(e.keyCode) > -1) { //left/up/right/down
+      switch(e.keyCode) {
+        case 37: //left
+          rollCount--; break; 
+        case 38: //up 
+          emojiUp = 1; break;
+        case 39: //right
+          rollCount++; break;
+        case 40: //down 
+          emojiUp = 0;
+      }
+      text.innerHTML = getRoll(rollCount, emojiUp);
+    } else {
+      text.innerHTML = chosenKeyCode.text; 
+    }
     link.innerHTML = chosenKeyCode.link ? "[x]" : "";
     link.href = chosenKeyCode.link ? chosenKeyCode.link : "";
 
-    if(e.keyCode == 13) { //home.js
+    if(e.keyCode == 13) { //enter home.js
       link.target = "";
     }
     

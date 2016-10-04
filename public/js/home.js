@@ -1,8 +1,3 @@
-// // var inputResponses = {
-// // 	"sleep": "It's 4:32AM as I type this out..",
-// // 	":q": "If you're sure you wanna leave.. <a href=\"./index.html\">[x]</a>"
-// // };
-
 var socket = io.connect();
 
 //listen for keyboard events
