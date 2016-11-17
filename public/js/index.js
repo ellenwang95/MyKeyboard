@@ -9,7 +9,7 @@ var myKeyCodes = {
   8 : new MyKeyCode("Toss the negativity", ""), //delete/backspace
   9 : new MyKeyCode("next please", ""), //tab
   // 12 : 'clear',
-  13 : new MyKeyCode("You just found the entrance!", "home.html"), //enter
+  13 : new MyKeyCode("You just found the entrance!", "home"), //enter
   16 : new MyKeyCode(".. your mindset from time to time. ;)", ""), //shift
   17 : new MyKeyCode("Procrastinating is bad. Procrastination is the devil!","https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator?language=en"), //ctrl
   18 : new MyKeyCode("You always have a choice", ""), //alt/option
@@ -36,7 +36,7 @@ var myKeyCodes = {
   50 : new MyKeyCode("Soulmates", ""),//"2",
   51 : new MyKeyCode("Started taking piano lessons", ""), //3",
   52 : new MyKeyCode("Started taking swimming lessons", ""),//"4",
-  // 53 : new MyKeyCode("", ""), //5",
+  53 : new MyKeyCode("", ""), //5",
   // 54 : "6",
   // 55 : "7",
   56 : new MyKeyCode("My birthdate! :D", ""), //8
@@ -60,16 +60,16 @@ var myKeyCodes = {
   // 75 : "k",
   // 76 : new MyKeyCode("I have a friend who hates it when I use \'lol\'. It's sliiightly rubbing off on me.",""), //l
   77 : new MyKeyCode("Mark Manson", "https://markmanson.net"),//m,
-  78 : new MyKeyCode("Let's try something new today.", ""), //n,
+  78 : new MyKeyCode("Let's try something new today!", ""), //n,
   // 79 : "o",
   // 80 : "p",
   81 : new MyKeyCode("Don't give up!! Persevere!",""), //q
   // 82 : "r",
-  83 : new MyKeyCode("Stretch daily!", ""),//s",
+  83 : new MyKeyCode("Stretch daily", ""),//s",
   84 : new MyKeyCode("Tea > Coffee", ""), //t
   // 85 : "u",
   86 : new MyKeyCode("There's this Korean Pop group... ", "https://en.wikipedia.org/wiki/BTS_(band)"),  //V!!!!
-  87 : new MyKeyCode("Water (water) (water)","http://www.setnode.com/blog/university-of-waterloo-cheers/"),
+  87 : new MyKeyCode("Water (water) (water) ","http://www.setnode.com/blog/university-of-waterloo-cheers/"),
   // 88 : "x",
   89 : new MyKeyCode("Made this on a whim. Wanted to make something interactive and personal.",""), //y",
   // 90 : "z",

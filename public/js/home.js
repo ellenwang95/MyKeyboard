@@ -14,30 +14,40 @@ window.addEventListener("keyup", function (event) {
 //listen for socket events from server
 socket.on('got entry', function (retrievedentry) {
     $("#textinput").select();
-    if(retrievedentry.hasOwnProperty("error")) {
+
+    if(isSpecial($("#textinput").val())) {
+    	$("#textinputdiv").animate({'bottom': '180'}, 1000);
+		fadeInSpecialEntry($("#textinput").val());
+    } else if(retrievedentry.hasOwnProperty("error")) {
         $("#textinputdiv").animate({'bottom': '150'}, 1000);
-        fadeInNewLine("Nothing in the bank for that yet.");
+        fadeInErrorLine();
     } else {
-        $("#textinputdiv").animate({'bottom': '200'}, 1000);
-        fadeInNewContent(retrievedentry);
+        $("#textinputdiv").animate({'bottom': '180'}, 1000);
+        fadeInRandomEntry(retrievedentry);
     }
 });
 
-function fadeInNewLine(line) {
-    $("#firstline, #link, #maincontent").fadeOut(function() {
-        $("#firstline").html(line).fadeIn();
+function fadeInErrorLine() {
+    $("#maincontent, #link, #firstline, #specialcontent").fadeOut(function() {
+        $("#errorline").html("Nothing in the bank for that yet.").fadeIn();
     }); 
 }
 
-function fadeInNewContent(entry) {
-    $("#maincontent, #link, #firstline").fadeOut().promise().done(function() {
+function fadeInRandomEntry(entry) {
+    $("#maincontent, #link, #firstline, #specialcontent, #errorline").fadeOut().promise().done(function() {
         var linkhref = entry.link ? entry.link : "";
         var linktext = entry.link ? "[x]" : "";
         var maincontent = entry.maincontent ? entry.maincontent : ""; 
 
-        $("#firstline").html(entry.firstline).fadeIn();
+        $("#firstline").html(entry.firstline + "<br><br>").fadeIn();
         $("#link").prop('href', linkhref);
         $("#link").text(linktext).fadeIn();
-        $("#maincontent").html(maincontent).fadeIn();
+        $("#maincontent").html(maincontent + "<br><br>").fadeIn();
+    });
+}
+
+function fadeInSpecialEntry(key) {
+	$("#maincontent, #link, #firstline, #errorline").fadeOut().promise().done(function() {
+    	$("#specialcontent").html(getSpecialContent(key)).fadeIn();
     });
 }

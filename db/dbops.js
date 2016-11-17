@@ -48,8 +48,8 @@ var printReadStream = function(db) {
 	  , keys      : true          // see db.createKeyStream()
 	  , values    : true          // see db.createValueStream()
 	}).on('data', function (data) {
-	      console.log("key:", data.key);
-	      console.log("value:", data.value);
+	      // console.log("key:", data.key);
+	      // console.log("value:", data.value);
 	    });
 }
 
