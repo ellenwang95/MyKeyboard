@@ -32,6 +32,7 @@ input.minimal {
     -webkit-text-fill-color: #585858;
     font-size: 20px;
     text-align: center;
+    direction: rtl;
 }
 
 #contentflexbox {

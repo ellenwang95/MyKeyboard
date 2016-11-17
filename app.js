@@ -13,9 +13,10 @@ var dbops = require('./db/dbops');
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-app.use('/js',express.static(path.join(__dirname, 'public/js')));
-app.use('/css',express.static(path.join(__dirname, 'public/css')));
-app.use('/db',express.static(path.join(__dirname, 'db')));
+app.use(express.static(__dirname + '/public'));
+// app.use('/js',express.static(path.join(__dirname, '/public/js')));
+// app.use('/css',express.static(path.join(__dirname, '/public/css')));
+app.use('/db',express.static(path.join(__dirname, '/db')));
 
 //routing 
 app.set('view engine', 'pug')
