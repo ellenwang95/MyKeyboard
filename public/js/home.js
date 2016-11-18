@@ -13,6 +13,8 @@ window.addEventListener("keyup", function (event) {
 
 //listen for socket events from server
 socket.on('got entry', function (retrievedentry) {
+		// window.location.href = "/home/" + $("#textinput").val();
+
     $("#textinput").select();
 
     if(isSpecial($("#textinput").val())) {
@@ -43,11 +45,5 @@ function fadeInRandomEntry(entry) {
         $("#link").prop('href', linkhref);
         $("#link").text(linktext).fadeIn();
         $("#maincontent").html(maincontent + "<br><br>").fadeIn();
-    });
-}
-
-function fadeInSpecialEntry(key) {
-	$("#maincontent, #link, #firstline, #errorline").fadeOut().promise().done(function() {
-    	$("#specialcontent").html(getSpecialContent(key)).fadeIn();
     });
 }
